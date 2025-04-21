@@ -20,9 +20,7 @@ let package = Package(
         .target(
             name: "KeyboardExpander",
             swiftSettings: [
-                .enableExperimentalFeature("StrictConcurrency"),
-                .unsafeFlags(["-Xfrontend", "-enable-actor-data-race-checks"]),
-                .define("SWIFT_STRICT_CONCURRENCY")
+                .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
     ]
