@@ -1,0 +1,29 @@
+// swift-tools-version: 6.0
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "KeyboardExpander",
+    platforms: [
+        .iOS(.v13)
+    ],
+    products: [
+        // Products define the executables and libraries a package produces, making them visible to other packages.
+        .library(
+            name: "KeyboardExpander",
+            targets: ["KeyboardExpander"]),
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package, defining a module or a test suite.
+        // Targets can depend on other targets in this package and products from dependencies.
+        .target(
+            name: "KeyboardExpander",
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency"),
+                .unsafeFlags(["-Xfrontend", "-enable-actor-data-race-checks"]),
+                .define("SWIFT_STRICT_CONCURRENCY")
+            ]
+        ),
+    ]
+)
