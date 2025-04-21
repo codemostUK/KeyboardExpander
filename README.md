@@ -78,4 +78,4 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ## 🧠 About
 
-Part of the [CodeMost](https://github.com/codemostUK) open-source initiative. Created and maintained by [@tolgaseremet](https://github.com/tolgaseremet).
+Part of the [CodeMost](https://github.com/codemostUK) open-source initiative. Created and maintained by [@codemostUK](https://github.com/codemostUK).
