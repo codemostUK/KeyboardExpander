@@ -2,8 +2,8 @@
 //  KeyboardExpander.swift
 //  KeyboardExpander
 //
-//  Created by Tolga Seremet on 14.03.2023.
-//  Copyright © 2023 Codemost.
+//  Created by Tolga Seremet on 14.03.2025.
+//  Copyright © 2025 Codemost.
 //
 
 import UIKit
@@ -37,15 +37,15 @@ final public class KeyboardExpander: NSObject {
     /// Additional padding for the scroll view when the keyboard is shown.
     @IBInspectable public var extraPaddingForScrollView: CGFloat = 0
 
-    private var cancellables = Set<AnyCancellable>()
+    private var subscribers = Set<AnyCancellable>()
 
     public override init() {
         super.init()
     }
 
     deinit {
-        cancellables.forEach { $0.cancel() }
-        cancellables.removeAll()
+        subscribers.forEach { $0.cancel() }
+        subscribers.removeAll()
     }
 }
 
@@ -55,7 +55,7 @@ public extension KeyboardExpander {
     /// Sets up bindings to observe keyboard show and hide notifications.
     private func setupBindings()  {
 
-        guard cancellables.count == 0 else { return }
+        guard subscribers.count == 0 else { return }
 
         Publishers.Merge(
             NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification),
@@ -79,7 +79,7 @@ public extension KeyboardExpander {
                     break
             }
         })
-        .store(in: &cancellables)
+        .store(in: &subscribers)
     }
 
     /// Handles the keyboard appearing event, updating the scroll view insets and constraint to accommodate the keyboard.
